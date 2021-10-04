@@ -2,19 +2,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web
+  name: web-conversao-peso
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: web
+      app: web-conversao-peso
   template:
     metadata:
       labels:
-        app: web
+        app: web-conversao-peso
     spec:
       containers:
-        - name: web
+        - name: conatainer-conversao-peso
           image: franciscojsc/conversao-peso:v1
           ports:
             - containerPort: 80
@@ -24,11 +24,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: web-service
+  name: service-conversao-peso
 spec:
   selector:
-    app: web
+    app: web-conversao-peso
   ports:
     - port: 80
-      nodePort: 30000
-  type: NodePort
+  type: LoadBalancer
