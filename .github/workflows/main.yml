@@ -27,7 +27,7 @@ jobs:
           push: true
           tags: |
             franciscojsc/conversao-ṕeso:latest
-            franciscojsc/conversao-peso:${{ github.run_number }}
+            franciscojsc/conversao-peso:v${{ github.run_number }}
         
   CD:
     runs-on: ubuntu-latest
@@ -44,5 +44,5 @@ jobs:
         with:
           manifests: |
             ./k8s/deployment.yaml
-          images: franciscojsc/conversao-peso:${{ github.run_number }}
+          images: franciscojsc/conversao-peso:v${{ github.run_number }}
   
